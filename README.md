@@ -4,4 +4,4 @@ W.I.P.
 ## Requisições
 
 ### Exemplo
-![Não tem imagem isso é um exemplo](img/exemplo.png)
+![Imagem qualquer](img/imagem.png)

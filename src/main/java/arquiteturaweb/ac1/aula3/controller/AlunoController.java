@@ -1,9 +1,5 @@
-//package main.java.arquiteturaweb.ac1.aula3.controller;
+//Mantendo a alteracao da etapa 3 Q faz funcionar
 package arquiteturaweb.ac1.aula3.controller;
-
-// ??????????????
-// o Java detecta como 'errado' mas só desse jeito a Api funciona?????????
-// quando isso tá como é indicado o 'correto', não funciona.
 
 import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-
 @RestController
+
+//Tem alterações a ser feita no controler
+//Usar os Services
+
+// A array q simula o BD vai passar a ser feita em um service
+
+//fazer repository primeiro
+// services segundo
+// terceiro atualizar controller
 
 @RequestMapping("/alunos")
 public class AlunoController {

@@ -1,13 +1,22 @@
-package main.java.arquiteturaweb.ac1.aula3.controller;
+//package main.java.arquiteturaweb.ac1.aula3.controller;
+package arquiteturaweb.ac1.aula3.controller;
+
+// ??????????????
+// o Java detecta como 'errado' mas só desse jeito a Api funciona?????????
+// quando isso tá como é indicado o 'correto', não funciona.
 
 import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SpringBootApplication
+
 @RestController
+
 @RequestMapping("/alunos")
 public class AlunoController {
 
@@ -17,16 +26,17 @@ public class AlunoController {
     public AlunoController(){
         alunos.add(new Aluno(nextId++, "Lucas da Silva", "159898988", 10, "Belas Artes", "lucassilva@email.com"));
     }
-    
-    @PostMapping
-    public Aluno criarAluno(@RequestBody Aluno aluno) {
-        aluno.setId((long) (alunos.size() + 1));//
+
+    @PostMapping("/add")
+    public Aluno addAluno(@RequestBody Aluno aluno) {
+        aluno.setId((long) (alunos.size() + 1));
         alunos.add(aluno);
-        return aluno;
+        System.out.println("Aluno adicionado: " + aluno); 
+        return aluno; 
     }
 
     @GetMapping
-    public List<Aluno> listarAlunos() {
+    public List<Aluno> getAllAlunos() {
         return alunos;
     }
 
@@ -38,15 +48,9 @@ public class AlunoController {
                 .orElse(null);
     }
 
-    @PostMapping("/add")
-    public Aluno addAluno(@RequestBody Aluno aluno) {
-        alunos.add(aluno);
-        System.out.println("Aluno adicionado: " + aluno); 
-        return aluno; 
-    }
-
     @DeleteMapping("/{id}")
     public void deletarAluno(@PathVariable Long id) {
+        System.out.println("Removendo Aluno "); 
         alunos.removeIf(aluno -> aluno.getId().equals(id));
     }
 

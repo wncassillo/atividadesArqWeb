@@ -1,7 +1,7 @@
-package arquiteturaweb.ac1.aula3.services;
+package main.java.arquiteturaweb.ac1.aula3.services;
 
 import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
-import arquiteturaweb.ac1.aula3.repository.AlunoRepository;
+import main.java.arquiteturaweb.ac1.aula3.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -33,10 +33,10 @@ public class AlunoServiceImpl implements AlunoService{
         return alunoRepository.editAluno(id, aluno);
     }
 
-   // @Override
-    //public void deleteAluno(long id){
-    //    return alunoRepository.deleteAluno(id);
-    //}
+    @Override
+    public String deleteAluno(long id){
+        return alunoRepository.deleteAluno(id);
+    }
 
 
-}
+}   

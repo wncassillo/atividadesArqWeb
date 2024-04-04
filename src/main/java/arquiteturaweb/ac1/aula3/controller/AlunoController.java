@@ -5,12 +5,11 @@ import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-import arquiteturaweb.ac1.aula3.services.AlunoService;
+import main.java.arquiteturaweb.ac1.aula3.services.AlunoService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootApplication
 @RestController
 
 //tenho que refazer o delete pra nao ser void.
@@ -31,22 +30,22 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public Aluno getAlunoById(Long id) {
+    public Aluno getAlunoById(@PathVariable Long id) {
         return alunoService.getAlunoById(id);
     }
 
     @PostMapping("/add")
-    public Aluno addAluno(Aluno aluno) {
+    public Aluno addAluno(@RequestBody Aluno aluno) {
         return alunoService.addAluno(aluno);
     }
 
     @PutMapping("/{id}")
-    public Aluno editAluno(Long id,  Aluno alunoAtualizado) {
+    public Aluno editAluno(@PathVariable Long id,  @RequestBody Aluno alunoAtualizado) {
         return alunoService.editAluno(id,alunoAtualizado);
     }
 
-    //@DeleteMapping("/{id}")
-    //public void deleteAluno(@PathVariable Long id) {
-    //    return alunoService.deleteAluno(id);
-    //}
+    @DeleteMapping("/{id}")
+    public String deleteAluno(@PathVariable Long id) {
+        return alunoService.deleteAluno(id);
+    }
 }

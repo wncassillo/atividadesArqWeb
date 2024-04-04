@@ -1,7 +1,7 @@
-package main.java.arquiteturaweb.ac1.aula3.services;
+package arquiteturaweb.ac1.aula3.services;
 
-import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
-import main.java.arquiteturaweb.ac1.aula3.repository.AlunoRepository;
+import arquiteturaweb.ac1.aula3.model.Aluno;
+import arquiteturaweb.ac1.aula3.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

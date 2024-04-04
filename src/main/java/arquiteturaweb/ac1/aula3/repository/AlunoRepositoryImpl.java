@@ -1,8 +1,6 @@
-package main.java.arquiteturaweb.ac1.aula3.repository;
-//package arquiteturaweb.ac1.aula3.repository;
+package arquiteturaweb.ac1.aula3.repository;
 
-import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
-//import arquiteturaweb.ac1.aula3.model.Aluno; //alternativa
+import arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +65,7 @@ public class AlunoRepositoryImpl implements AlunoRepository {
     public String deleteAluno(long id) {
         Aluno alunoExistente = getAlunoById(id);
         if (alunoExistente != null) {
-            alunos.remove(id);
+            alunos.removeIf(aluno -> aluno.getId().equals(id));
             return "Aluno removido com sucesso";
         } else {
             return "Aluno não encontrado";

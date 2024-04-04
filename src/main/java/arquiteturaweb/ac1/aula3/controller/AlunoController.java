@@ -1,11 +1,11 @@
 //Mantendo a alteracao da etapa 3 Q faz funcionar
-package main.java.arquiteturaweb.ac1.aula3.controller;
+package arquiteturaweb.ac1.aula3.controller;
 
-import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
+import arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-import main.java.arquiteturaweb.ac1.aula3.services.AlunoService;
+import arquiteturaweb.ac1.aula3.services.AlunoService;
 
 import java.util.ArrayList;
 import java.util.List;

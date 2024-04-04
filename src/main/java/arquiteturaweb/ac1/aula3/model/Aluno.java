@@ -1,4 +1,4 @@
-package main.java.arquiteturaweb.ac1.aula3.model;
+package arquiteturaweb.ac1.aula3.model;
 
 public class Aluno {
     private Long id;

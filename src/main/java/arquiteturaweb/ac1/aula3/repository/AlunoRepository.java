@@ -1,6 +1,6 @@
-package main.java.arquiteturaweb.ac1.aula3.repository;
+package arquiteturaweb.ac1.aula3.repository;
 
-import main.java.arquiteturaweb.ac1.aula3.model.Aluno;
+import arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 

@@ -1,5 +1,3 @@
-### (Disclaimer para o professor:)
-Depois de brigar muito, passar parte do feriado tentanto arrumar o da aula3 eu finalmente pude começar a atividade da aula4. Só que também deu errado não sei por quê. Nada é indicado como erro, tudo roda perfeitamente, o ./gradlew build não acusa um errinho se quer. Só que mais uma vez o Postman só da 404. Eu virei esse código de ponta a ponta a madrugada inteira e simplesmente não sei o que tá errado, acho que é mais alguma coisa específica e absurda como foi o da aula3.
 
 # AC1 - Etapa IV - Inversão de Controle e Injeção de Dependências
 Nessa etapa, foram criadas as interfaces, repositórios e services, além de um retrabalho nos métodos da versão anterior.
@@ -24,5 +22,19 @@ Nessa etapa, foram criadas as interfaces, repositórios e services, além de um 
 ![Print do Controller](img/Controller.png)
 
 ## Requisições
-Como eu mencionei anteriormente, não deram certo.
-![Print Erro 404](img/404.PNG)
+
+### Get de todos os Alunos
+![Print Get All Alunos](img/getAll.PNG)
+
+### Get Específico
+![Print Get Aluno por Id](img/getId.png)
+
+### Add Aluno
+![Print Add Aluno](img/add.png)
+
+### Delete + Select de todos
+![Print delete de Aluno](img/delete1.png)
+![Print de Get All Alunos pra mostrar que foi deletado](img/delete2.png)
+
+### Edit
+![Print Edit Aluno](img/edit.png)

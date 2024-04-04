@@ -25,4 +25,4 @@ Nessa etapa, foram criadas as interfaces, repositórios e services, além de um 
 
 ## Requisições
 Como eu mencionei anteriormente, não deram certo.
-![Print Erro 404](img/404.png)
+![Print Erro 404](img/404.PNG)

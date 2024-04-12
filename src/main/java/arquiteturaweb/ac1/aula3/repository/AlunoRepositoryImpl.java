@@ -2,74 +2,81 @@ package arquiteturaweb.ac1.aula3.repository;
 
 import arquiteturaweb.ac1.aula3.model.Aluno;
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
+import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @Repository
 public class AlunoRepositoryImpl implements AlunoRepository {
-    private final List<Aluno> alunos = new ArrayList<>();
-    private Long nextId = 1L; //Array e iniciando a var pra definir os ids
+    private final JdbcTemplate jdbcTemplate;
 
-    //Aluno pre cadastrado pra ajudar a testar
-    public AlunoRepositoryImpl(){
-        alunos.add(new Aluno(1L, "Lucas da Silva", "159898988", 10, "Belas Artes", "lucassilva@email.com"));
-        nextId = 2L; //ajusta p q o prox id seja 2 pra evitar erros
+    public AlunoRepositoryImpl(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    //Metodos Interface
+    //Metodos 
     @Override
-    public List<Aluno> getAllAlunos() {
-        return alunos;
+    public List<Aluno> getAllAlunos() { 
+        return jdbcTemplate.query("SELECT * FROM aluno", (resultSet, rowNum) -> {
+                    System.out.println("Numero da linha: " + rowNum);
+                    return new Aluno(
+                            resultSet.getLong("id"),
+                            resultSet.getString("nome"),
+                            resultSet.getString("celular"),
+                            resultSet.getInt("idade"),
+                            resultSet.getString("curso"),
+                            resultSet.getString("email")
+                    );
+                }
+        );
     }
     
     @Override
     public Aluno getAlunoById(Long id) {
-        return alunos.stream()
-                .filter(aluno -> aluno.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+        String query = "SELECT * FROM aluno WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, new Object[]{id}, (resultSet, rowNum) ->
+                new Aluno(
+                       resultSet.getLong("id"),
+                            resultSet.getString("nome"),
+                            resultSet.getString("celular"),
+                            resultSet.getInt("idade"),
+                            resultSet.getString("curso"),
+                            resultSet.getString("email")
+                )
+        );
     }
 
+    //juntando o Add e o edit em um só
+    
+            String updateQuery = "UPDATE public.aluno SET nome = ?, celular = ?, idade = ?, curso = ?, email = ? WHERE id = ?";
+               
+       
     @Override
     public Aluno addAluno(Aluno aluno) {
-
-        if (aluno.getId() == null) {
-            aluno.setId(nextId++);
-            alunos.add(aluno);
-        } else {
-            alunos.removeIf(a -> a.getId().equals(aluno.getId()));
-            alunos.add(aluno);
-        }
+        if (aluno.getId() != null) {
+            String insertQuery = "INSERT INTO public.aluno (id, nome, celular, idade, curso, email) VALUES (?, ?, ?, ?, ?, ?)";
+            jdbcTemplate.update(insertQuery, aluno.getId(), aluno.getNome(), aluno.getCelular(),
+                    aluno.getIdade(), aluno.getCurso(), aluno.getEmail());        }
         return aluno;
-        //Alterei pra ver se era ele o problema
-        //aluno.setId((long) (alunos.size() + 1));
-        //alunos.add(aluno);
-        //System.out.println("Aluno adicionado: " + aluno); 
-        //return aluno; 
-    }
-    
-    @Override 
-    public Aluno editAluno(Long id, Aluno alunoAtualizado) {
-        Aluno alunoExistente = getAlunoById(id);
-        if (alunoExistente != null) {
-            alunoExistente.setNome(alunoAtualizado.getNome());
-            alunoExistente.setCelular(alunoAtualizado.getCelular());
-            alunoExistente.setIdade(alunoAtualizado.getIdade());
-            alunoExistente.setCurso(alunoAtualizado.getCurso());
-            alunoExistente.setEmail(alunoAtualizado.getEmail());
-        }
-        return alunoExistente;
     }
 
     @Override
+    public Aluno editAluno(Aluno aluno) {
+        
+            String updateQuery = "UPDATE public.aluno SET nome = ?, celular = ?, idade = ?, curso = ?, email = ? WHERE id = ?";
+            jdbcTemplate.update(updateQuery, aluno.getNome(), aluno.getCelular(),
+                 aluno.getIdade(), aluno.getCurso(), aluno.getEmail(), aluno.getId());  
+        
+        return aluno;
+    }
+
+    @Override // Tem que mudar
     public String deleteAluno(long id) {
         Aluno alunoExistente = getAlunoById(id);
         if (alunoExistente != null) {
-            alunos.removeIf(aluno -> aluno.getId().equals(id));
             return "Aluno removido com sucesso";
         } else {
             return "Aluno não encontrado";
         }
-    };
+    }
 
 }

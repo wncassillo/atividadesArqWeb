@@ -7,6 +7,6 @@ public interface AlunoService {
     List<Aluno> getAllAlunos(); 
     Aluno getAlunoById(Long id);
     Aluno addAluno(Aluno aluno);
-    Aluno editAluno(Long id, Aluno aluno);
+    Aluno editAluno(Aluno aluno);
     String deleteAluno(long id);
 }

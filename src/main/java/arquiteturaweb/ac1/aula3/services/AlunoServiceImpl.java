@@ -29,8 +29,8 @@ public class AlunoServiceImpl implements AlunoService{
     }
 
     @Override
-    public Aluno editAluno(Long id, Aluno aluno){
-        return alunoRepository.editAluno(id, aluno);
+    public Aluno editAluno(Aluno aluno){
+        return alunoRepository.editAluno(aluno);//
     }
 
     @Override

@@ -1,5 +1,5 @@
 # AC1 - Etapa V - Usando JDBC
-W.I.P
+W.I.P (BUG)
 
 ## Classes
 ### Classe Main

@@ -7,6 +7,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,16 +28,26 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O Aluno não pode ter um nome em branco.")
+    @Size(min = 3, max = 120, message = "O Nome deve ter entre 3 e 120 caracteres.")
     private String nome;
 
+    @NotBlank(message = "O Aluno deve ter um numero de celular.")
+    @Size(min = 5, max = 30, message = "O numero deve possuir de 5 a 20 caracteres.") 
     private String celular;
 
+    //Idade pode ser em branco
     private int idade;
 
+    //foreign key
+    @NotNull(message = "O curso não pode ser nulo.")
     @ManyToOne
     @JoinColumn(name = "id_curso")
     private Curso curso;
 
+    @NotBlank(message = "O Aluno deve ter um endereço de email.") 
+    @Size(min = 10, max = 120, message = "O email deve possuir de 10 a 120 caracteres.") 
+    @Email(message = "O endereço de E-Mail deve ser válido.")
     private String email;
 
 }

@@ -15,7 +15,10 @@ import br.wncassillo.arquitetura.alunos.model.Aluno;
 import br.wncassillo.arquitetura.alunos.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 
-//Validação e Beans
+//To Do
+//Validação nos Controllers
+    //BindingResults
+//Não precisa fazer Exceptions
 
 @RestController
 @RequestMapping("/aluno")

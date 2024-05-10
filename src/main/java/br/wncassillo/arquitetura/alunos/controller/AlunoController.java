@@ -15,6 +15,11 @@ import br.wncassillo.arquitetura.alunos.model.Aluno;
 import br.wncassillo.arquitetura.alunos.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 
+//To DO
+//UPDATE CURSO E ALUNO
+
+//Validação e Beans
+
 @RestController
 @RequestMapping("/aluno")
 @RequiredArgsConstructor
@@ -27,7 +32,7 @@ public class AlunoController {
         return alunoService.getAlunos();
     }
 
-    @GetMapping("/{id}") //500
+    @GetMapping("/{id}") 
     public Optional<Aluno> getAluno(@PathVariable Long id){
         return alunoService.getAlunoPorId(id);
     }
@@ -63,9 +68,9 @@ public class AlunoController {
         return alunoService.getAlunosByIdade(idade);
     }
 
-    @GetMapping("/getAlunosByCurso/{curso}") // alunos por curso ou contendo
-    public List<Aluno> getAlunosPorCurso(@PathVariable String curso){
-        return alunoService.getAlunosByCurso(curso);
+    @GetMapping("/getAlunosByCursoId/{cursoId}") // alunos por curso ou contendo
+    public List<Aluno> getAlunosPorCurso(@PathVariable Long curso){
+        return alunoService.getAlunosByCursoId(curso);
     }
 
     @GetMapping("/getAlunoByEmail/{email}") // aluno por email 
@@ -76,6 +81,23 @@ public class AlunoController {
     @GetMapping("/getAlunosByParteEmail/{email}") // alunos por email contendo
     public List<Aluno> getAlunosPorParteEmail(@PathVariable String email){
         return alunoService.getAlunosByParteEmail(email);
+    }
+
+    //metodos da parte 8
+
+    @GetMapping("/getAlunosByCursoTitulo/{curso}") // alunos por curso ou contendo
+    public List<Aluno> getAlunosPorCursoTitulo(@PathVariable String curso){
+        return alunoService.getAlunosByCursoTitulo(curso);
+    }
+
+    @GetMapping("/countByCursoId/{cursoId}")
+    public Long countAlunosByCursoId(@PathVariable Long cursoId) {
+        return alunoService.countAlunosByCursoId(cursoId);
+    }
+
+    @GetMapping("/countByCursoTitulo/{cursoTitulo}")
+    public Long countAlunosByCursoTitulo(@PathVariable String cursoTitulo) {
+        return alunoService.countAlunosByCursoTitulo(cursoTitulo);
     }
 
 }

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import br.wncassillo.arquitetura.alunos.model.Aluno;
 
@@ -19,9 +21,17 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
     public List<Aluno> findByIdade(int idade);
 
-    public List<Aluno> findByCursoContaining(String curso);// Retorna lista de alunos, com o curso contendo args
+    public List<Aluno> findByCursoId(Long curso);// Retorna lista de alunos, com o curso com o id correspondente
 
     public Aluno findByEmail(String email);
 
     public List<Aluno> findByEmailContaining(String email);
+
+    public List<Aluno> findByCursoTitulo(String curso);
+
+    @Query("SELECT COUNT(a) FROM Aluno a WHERE a.curso.id = :cursoId")
+    Long countAlunosPorCursoId(@Param("cursoId") Long cursoId);
+
+    @Query("SELECT COUNT(a) FROM Aluno a WHERE a.curso.titulo = :cursoTitulo")
+    Long countAlunosPorCursoTitulo(@Param("cursoTitulo") String cursoTitulo);/////
 }

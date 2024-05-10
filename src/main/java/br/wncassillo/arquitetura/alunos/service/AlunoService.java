@@ -15,8 +15,11 @@ public interface AlunoService {
     public List<Aluno> getAlunosByParteNome(String nome);
     public Aluno getAlunoByCelular(String celular);
     public List<Aluno> getAlunosByIdade(int idade);
-    public List<Aluno> getAlunosByCurso(String curso);
+    public List<Aluno> getAlunosByCursoId(Long curso);
     public Aluno getAlunoByEmail(String email);
     public List<Aluno> getAlunosByParteEmail(String email);
+    public List<Aluno> getAlunosByCursoTitulo(String curso);
+    public Long countAlunosByCursoId(Long curso);
+    public Long countAlunosByCursoTitulo(String curso);
 
 }

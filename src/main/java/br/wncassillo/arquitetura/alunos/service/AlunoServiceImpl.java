@@ -20,7 +20,7 @@ public class AlunoServiceImpl implements AlunoService{
     }
 
     @Override
-    public Optional<Aluno> getAlunoPorId(Long id) { //500???
+    public Optional<Aluno> getAlunoPorId(Long id) { 
         return alunoRepository.findById(id);
         //return alunoRepository.getReferenceById(id);
     }
@@ -49,8 +49,8 @@ public class AlunoServiceImpl implements AlunoService{
     public List<Aluno> getAlunosByIdade(int idade){
         return alunoRepository.findByIdade(idade);
     }
-    public List<Aluno> getAlunosByCurso(String curso){
-        return alunoRepository.findByCursoContaining(curso);
+    public List<Aluno> getAlunosByCursoId(Long curso){
+        return alunoRepository.findByCursoId(curso);
     }
     public Aluno getAlunoByEmail(String email){
         return alunoRepository.findByEmail(email);
@@ -58,5 +58,21 @@ public class AlunoServiceImpl implements AlunoService{
     public List<Aluno> getAlunosByParteEmail(String email){
         return alunoRepository.findByEmailContaining(email);
     }
+
+    @Override
+    public List<Aluno> getAlunosByCursoTitulo(String curso) {
+        return alunoRepository.findByCursoTitulo(curso);
+    }
+
+    @Override
+    public Long countAlunosByCursoId(Long id) {
+        return alunoRepository.countAlunosPorCursoId(id);
+    }
+
+    @Override
+    public Long countAlunosByCursoTitulo(String curso) {
+        return alunoRepository.countAlunosPorCursoTitulo(curso);
+    }
+
 
 }

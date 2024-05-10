@@ -18,7 +18,12 @@ import lombok.RequiredArgsConstructor;
 //To Do
 //Validação nos Controllers
     //BindingResults
-//Não precisa fazer Exceptions
+    //Não precisa fazer Exceptions
+//Readme
+    //Nome dos integrandes
+    //print das req nos end points
+    //print das classes
+    //prints validação
 
 @RestController
 @RequestMapping("/aluno")

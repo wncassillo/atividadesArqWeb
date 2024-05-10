@@ -21,5 +21,4 @@ public interface AlunoService {
     public List<Aluno> getAlunosByCursoTitulo(String curso);
     public Long countAlunosByCursoId(Long curso);
     public Long countAlunosByCursoTitulo(String curso);
-
 }

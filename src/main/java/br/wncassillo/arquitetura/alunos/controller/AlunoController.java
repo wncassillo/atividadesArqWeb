@@ -15,9 +15,6 @@ import br.wncassillo.arquitetura.alunos.model.Aluno;
 import br.wncassillo.arquitetura.alunos.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 
-//To DO
-//UPDATE CURSO E ALUNO
-
 //Validação e Beans
 
 @RestController
@@ -37,7 +34,7 @@ public class AlunoController {
         return alunoService.getAlunoPorId(id);
     }
 
-    @PostMapping("/add") 
+    @PostMapping("/add") //Além de adicionar, esse método também atualiza a instancia do objeto, se a requisição conter um id á existente
     public void addAluno(@RequestBody Aluno aluno){
         alunoService.addAluno(aluno);
     }

@@ -80,7 +80,7 @@ Integrantes do Grupo:
 ![Print Endpoint GetByEmail Aluno](img/alunoByEmail.png)
 
 ### Get By Parte Email
-![Print Endpoint GetByNome Aluno](img/alunoByPartEmail.png)
+![Print Endpoint GetByNome Aluno](img/alunosByPartEmail.png)
 
 ### Get Alunos By Titulo Curso
 ![Print Endpoint GetByTituloCurso Aluno](img/alunosByTituloCur.png)

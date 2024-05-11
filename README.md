@@ -46,6 +46,21 @@ Integrantes do Grupo:
 
 ## Endpoints Curso
 
+### Get All
+![Print Endpoint GetAll Cursos](img/cursoAll.png)
+
+### Get por Id
+![Print Endpoint GetById Cursos](img/cursoGet.png)
+
+### Add (Também edita, se informar um Id)
+![Print Endpoint Add Cursos](img/cursoAdd.png)
+![Print Endpoint Add fazendo Edit Cursos](img/cursoAddEdit.png)
+
+### Delete (e Get All para demonstrar a remoção)
+![Print Endpoint Remove Cursos](img/cursoDelete.png)
+![Print Endpoint GetAll Cursos, mostrando a remoção](img/cursoDelete2.png)
+
+
 ## Validação
 
 ### Validação Aluno

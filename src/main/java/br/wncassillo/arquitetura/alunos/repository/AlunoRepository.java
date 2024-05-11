@@ -21,7 +21,7 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
     public List<Aluno> findByIdade(int idade);
 
-    public List<Aluno> findByCursoId(Long curso);// Retorna lista de alunos, com o curso com o id correspondente
+    public List<Aluno> findByCursoId(Long cursoId);// Retorna lista de alunos, com o curso com o id correspondente
 
     public Aluno findByEmail(String email);
 

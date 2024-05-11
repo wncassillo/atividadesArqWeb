@@ -83,8 +83,8 @@ public class AlunoController {
         return alunoService.getAlunosByIdade(idade);
     }
 
-    @GetMapping("/getAlunosByCursoId/{cursoId}") // alunos por curso ou contendo
-    public List<Aluno> getAlunosPorCurso(@PathVariable Long curso){
+    @GetMapping("/getAlunosByCursoId/{curso}") 
+    public List<Aluno> getAlunosPorCursoId(@PathVariable Long curso){
         return alunoService.getAlunosByCursoId(curso);
     }
 

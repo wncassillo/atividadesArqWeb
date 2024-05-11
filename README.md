@@ -44,6 +44,50 @@ Integrantes do Grupo:
 
 ## Endpoints Aluno
 
+### Get All
+![Print Endpoint GetAll Alunos](img/alunoAll.png)
+
+### Get Id
+![Print Endpoint GetById Aluno](img/alunoGet.png)
+
+### Add (e Edit)
+![Print Endpoint Add Aluno](img/alunoAdd.png)   
+![Print Endpoint Add fazendo Edit Aluno](img/alunoAddEdit.png)
+
+### Delete e Get All (Pra mostrar remoção)
+![Print Endpoint Remove Aluno](img/alunoDelete1.png)
+![Print Endpoint Remove 2 Aluno](img/alunoDelete2.png)
+
+### Get By Nome
+![Print Endpoint GetByNome Aluno](img/alunoGetNome.png)
+
+### Get By Parte do Nome
+![Print Endpoint GetByParteNome Aluno](img/alunoGetParteNome.png)
+
+### Get By Celular
+![Print Endpoint GetByCelular Aluno](img/alunoGetCel.png)
+
+### Get By Idade 
+![Print Endpoint GetByIdade Aluno](img/alunoGetIdade.png)
+
+### Get Alunos By Curso Id
+![Print Endpoint GetByCursoId Aluno](img/alunosGetCursoId.png)
+
+### Get By Email
+![Print Endpoint GetByEmail Aluno](img/alunoByEmail.png)
+
+### Get By Parte Email
+![Print Endpoint GetByNome Aluno](img/alunoByPartEmail.png)
+
+### Get Alunos By Titulo Curso
+![Print Endpoint GetByTituloCurso Aluno](img/alunosByTituloCur.png)
+
+### Count Alunos By Curso Id
+![Print Endpoint CountAlunosByCursoId](img/countById.png)
+
+### Count Alunos By Curso Titulo
+![Print Endpoint CountAlunosByCursoTitulo](img/countByTit.png)
+
 ## Endpoints Curso
 
 ### Get All

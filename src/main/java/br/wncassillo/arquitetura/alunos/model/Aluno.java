@@ -36,11 +36,9 @@ public class Aluno {
     @Size(min = 5, max = 30, message = "O numero deve possuir de 5 a 20 caracteres.") 
     private String celular;
 
-    //Idade pode ser em branco
-    private int idade;
+    private int idade;  //Idade pode ser em branco
 
-    //foreign key
-    @NotNull(message = "O curso não pode ser nulo.")
+    @NotNull(message = "O curso não pode ser nulo.")//foreign key
     @ManyToOne
     @JoinColumn(name = "id_curso")
     private Curso curso;

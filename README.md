@@ -47,3 +47,12 @@ Integrantes do Grupo:
 ## Endpoints Curso
 
 ## Validação
+
+### Validação Aluno
+![Print 1 Validação Aluno](img/validacaoAluno1.png)
+![Print 2 Validação Aluno](img/validacaoAluno2.png)
+![Print 3 Validação Aluno](img/validacaoAluno3.png)
+
+### Validação Curso
+![Print 1 Validação Curso](img/validacaoCurso1.png)
+![Print 2 Validação Curso](img/validacaoCurso2.png)

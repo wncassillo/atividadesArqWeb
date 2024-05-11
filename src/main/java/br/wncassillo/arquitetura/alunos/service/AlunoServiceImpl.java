@@ -37,6 +37,17 @@ public class AlunoServiceImpl implements AlunoService{
         }
     }
 
+        @Override
+    public void editAluno(Long id, Aluno alunoNovo) {
+        Optional <Aluno> alunoAntigo = getAlunoPorId(id);
+        if (alunoAntigo.isPresent()){
+            alunoNovo.setId(id);
+            alunoRepository.save(alunoNovo); //método de salvar
+        } else {
+            throw new AlunoNaoEncontradoException("Não foi encontrado nenhum Aluno com o ID: " + id);
+        }
+    }
+
     @Override
     public Aluno getAlunoByNome(String nome) {
         return alunoRepository.findByNome(nome);

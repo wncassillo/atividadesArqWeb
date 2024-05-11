@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +52,16 @@ public class AlunoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAluno);
         //Sem erros, o aluno do requestbody é passado adiante para o service.
         //e o metodo recebe o status de resposta de sucesso
+    }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<String> editAluno(@Valid @PathVariable Long id, @RequestBody Aluno aluno, BindingResult result) {
+        try{
+            alunoService.editAluno(id, aluno);
+            return ResponseEntity.ok("Aluno editado com sucesso.");
+        } catch (AlunoNaoEncontradoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/remove/{id}")

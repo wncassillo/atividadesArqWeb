@@ -10,5 +10,6 @@ public interface CursoService {
     public Optional<Curso> getCursoPorId(Long id);
     public Curso addCurso (Curso curso);
     public void deleteCurso(Long id);
+    public void editCurso(Long id, Curso curso);//
 
 }

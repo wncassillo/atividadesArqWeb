@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,16 @@ public class CursoController {
     @GetMapping("/{id}") 
     public Optional<Curso> getCurso(@PathVariable Long id){
         return cursoService.getCursoPorId(id);
+    }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<String> editCurso(@Valid @PathVariable Long id, @RequestBody Curso curso, BindingResult result) {
+        try{
+            cursoService.editCurso(id, curso);
+            return ResponseEntity.ok("Curso editado com sucesso.");
+        } catch (CursoNaoEncontradoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @PostMapping("/add") 

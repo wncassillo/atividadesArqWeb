@@ -50,13 +50,16 @@ Integrantes do Grupo:
 ### Get Id
 ![Print Endpoint GetById Aluno](img/alunoGet.png)
 
-### Add (e Edit)
+### Add
 ![Print Endpoint Add Aluno](img/alunoAdd.png)   
-![Print Endpoint Add fazendo Edit Aluno](img/alunoAddEdit.png)
+
+### Edit
+![Print Endpoint Edit Aluno](img/alunoEdit1.png)
+![Print Endpoint GetAllAlunos pra mostrar edição](img/alunoEdit2.png)
 
 ### Delete e Get All (Pra mostrar remoção)
 ![Print Endpoint Remove Aluno](img/alunoDelete1.png)
-![Print Endpoint Remove 2 Aluno](img/alunoDelete2.png)
+![Print Endpoint GetAllAlunos pra mostar remoção](img/alunoDelete2.png)
 
 ### Get By Nome
 ![Print Endpoint GetByNome Aluno](img/alunoGetNome.png)
@@ -96,13 +99,16 @@ Integrantes do Grupo:
 ### Get por Id
 ![Print Endpoint GetById Cursos](img/cursoGet.png)
 
-### Add (Também edita, se informar um Id)
+### Add
 ![Print Endpoint Add Cursos](img/cursoAdd.png)
-![Print Endpoint Add fazendo Edit Cursos](img/cursoAddEdit.png)
+
+### Edit
+![Print Endpoint Edit Curso](img/cursoEdit1.png)
+![Print Endpoint GetAllCursos pra mostrar a edição](img/cursoEdit2.png)
 
 ### Delete (e Get All para demonstrar a remoção)
 ![Print Endpoint Remove Cursos](img/cursoDelete.png)
-![Print Endpoint GetAll Cursos, mostrando a remoção](img/cursoDelete2.png)
+![Print Endpoint GetAllCursos mostrando a remoção](img/cursoDelete2.png)
 
 
 ## Validação

@@ -40,4 +40,15 @@ public class CursoServiceImpl implements CursoService {
         }
     }
 
+    @Override
+    public void editCurso(Long id, Curso cursoNovo) {
+        Optional <Curso> cursoAntigo = getCursoPorId(id);
+        if (cursoAntigo.isPresent()){
+            cursoNovo.setId(id);
+            cursoRepository.save(cursoNovo); //método de salvar
+        } else {
+            throw new CursoNaoEncontradoException("Não foi encontrado nenhum Curso com o ID: " + id);
+        }
+    }
+
 }

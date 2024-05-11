@@ -10,6 +10,7 @@ public interface AlunoService {
     public Optional<Aluno> getAlunoPorId(Long id);
     public Aluno addAluno(Aluno aluno);
     public void deleteAluno(Long id);
+    public void editAluno(Long id, Aluno aluno);
     //metodos novos pra fechar os requisitos da aula5
     public Aluno getAlunoByNome(String nome);
     public List<Aluno> getAlunosByParteNome(String nome);

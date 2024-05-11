@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import br.wncassillo.arquitetura.alunos.exceptions.CursoNaoEncontradoException;
 import br.wncassillo.arquitetura.alunos.model.Curso;
 import br.wncassillo.arquitetura.alunos.repository.CursoRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,13 +26,18 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public void addCurso(Curso curso) {
-        cursoRepository.save(curso);
+    public Curso addCurso(Curso curso) {
+        return cursoRepository.save(curso);
     }
 
     @Override
     public void deleteCurso(Long id) {
-        cursoRepository.deleteById(id);
+        Optional <Curso> curso = getCursoPorId(id);
+        if (curso.isPresent()){
+            cursoRepository.deleteById(id);
+        } else {
+            throw new CursoNaoEncontradoException("Não foi encontrado nenhum Curso com o ID: " + id);
+        }
     }
 
 }

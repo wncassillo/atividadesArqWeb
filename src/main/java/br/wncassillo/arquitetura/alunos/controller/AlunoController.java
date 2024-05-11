@@ -1,8 +1,13 @@
 package br.wncassillo.arquitetura.alunos.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,19 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.wncassillo.arquitetura.alunos.exceptions.AlunoNaoEncontradoException;
 import br.wncassillo.arquitetura.alunos.model.Aluno;
 import br.wncassillo.arquitetura.alunos.service.AlunoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-//To Do
-//Validação nos Controllers
-    //BindingResults
-    //Não precisa fazer Exceptions
-//Readme
-    //Nome dos integrandes
-    //print das req nos end points
-    //print das classes
-    //prints validação
 
 @RestController
 @RequestMapping("/aluno")
@@ -43,16 +40,29 @@ public class AlunoController {
     }
 
     @PostMapping("/add") //Além de adicionar, esse método também atualiza a instancia do objeto, se a requisição conter um id á existente
-    public void addAluno(@RequestBody Aluno aluno){
-        alunoService.addAluno(aluno);
+    public ResponseEntity<?> addAluno(@Valid @RequestBody Aluno aluno, BindingResult result){
+        if (result.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            result.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
+            return ResponseEntity.badRequest().body(errors);
+            //cenário em que tem erros, então não é criado um novo aluno
+        }
+        Aluno createdAluno = alunoService.addAluno(aluno);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdAluno);
+        //Sem erros, o aluno do requestbody é passado adiante para o service.
+        //e o metodo recebe o status de resposta de sucesso
     }
 
     @DeleteMapping("/remove/{id}")
-    public void deleteAluno(@PathVariable Long id){
-        alunoService.deleteAluno(id);
+    public ResponseEntity<String> deleteAluno(@PathVariable Long id){
+        try{
+            alunoService.deleteAluno(id);
+            return ResponseEntity.ok("Aluno apagado com sucesso!");
+        } catch (AlunoNaoEncontradoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
-    //metodos novos
     @GetMapping("/getAlunoByNome/{nome}") // aluno com nome igual 
     public Aluno getAlunosPorNome(@PathVariable String nome){
         return alunoService.getAlunoByNome(nome);
@@ -87,7 +97,6 @@ public class AlunoController {
     public List<Aluno> getAlunosPorParteEmail(@PathVariable String email){
         return alunoService.getAlunosByParteEmail(email);
     }
-
     //metodos da parte 8
 
     @GetMapping("/getAlunosByCursoTitulo/{curso}") // alunos por curso ou contendo

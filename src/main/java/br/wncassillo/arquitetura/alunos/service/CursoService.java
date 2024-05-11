@@ -8,7 +8,7 @@ import br.wncassillo.arquitetura.alunos.model.Curso;
 public interface CursoService {
     public List<Curso> getCursos();
     public Optional<Curso> getCursoPorId(Long id);
-    public void addCurso (Curso curso);
+    public Curso addCurso (Curso curso);
     public void deleteCurso(Long id);
 
 }

@@ -8,7 +8,7 @@ import br.wncassillo.arquitetura.alunos.model.Aluno;
 public interface AlunoService {
     public List<Aluno> getAlunos();
     public Optional<Aluno> getAlunoPorId(Long id);
-    public void addAluno(Aluno aluno);
+    public Aluno addAluno(Aluno aluno);
     public void deleteAluno(Long id);
     //metodos novos pra fechar os requisitos da aula5
     public Aluno getAlunoByNome(String nome);

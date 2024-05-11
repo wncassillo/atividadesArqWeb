@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import br.wncassillo.arquitetura.alunos.exceptions.AlunoNaoEncontradoException;
 import br.wncassillo.arquitetura.alunos.model.Aluno;
 import br.wncassillo.arquitetura.alunos.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,18 +22,21 @@ public class AlunoServiceImpl implements AlunoService{
     @Override
     public Optional<Aluno> getAlunoPorId(Long id) { 
         return alunoRepository.findById(id);
-        //return alunoRepository.getReferenceById(id);
     }
     @Override
-    public void addAluno(Aluno aluno) {
-        alunoRepository.save(aluno);
+    public Aluno addAluno(Aluno aluno) {
+        return alunoRepository.save(aluno);
     }
     @Override
     public void deleteAluno(Long id) {
-        alunoRepository.deleteById(id);
+        Optional <Aluno> aluno = getAlunoPorId(id);
+        if (aluno.isPresent()){
+            alunoRepository.deleteById(id);
+        } else {
+            throw new AlunoNaoEncontradoException("Não foi encontrado nenhum Aluno com o ID: " + id);
+        }
     }
 
-    //metodos novos 
     @Override
     public Aluno getAlunoByNome(String nome) {
         return alunoRepository.findByNome(nome);
